@@ -3,14 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Programowanie w internecie</title>
-</head>
-<body>
-	Hello world!
-	
-	<fb:login-button 
-	  scope="public_profile,email"
-	  onlogin="checkLoginState();">
-	</fb:login-button>
 	<script>
 		  window.fbAsyncInit = function() {
 			FB.init({
@@ -37,12 +29,21 @@
 			statusChangeCallback(response);
 		});
 		
+		
+		
 		function checkLoginState() {
 		  FB.getLoginStatus(function(response) {
 			statusChangeCallback(response);
 		  });
 		}
 	</script>
+</head>
+<body>
+	Hello world!
 	
+	<fb:login-button 
+	  scope="public_profile,email"
+	  onlogin="checkLoginState();">
+	</fb:login-button>	
 </body>
 </html>
