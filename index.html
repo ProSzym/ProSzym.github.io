@@ -4,25 +4,25 @@
 	<meta charset="UTF-8">
 	<title>Programowanie w internecie</title>
 	<script>
-		  window.fbAsyncInit = function() {
+		window.fbAsyncInit = function() {
 			FB.init({
-			  appId      : '411012792965165',
-			  cookie     : true,
-			  xfbml      : true,
-			  version    : 'v3.3'
+				appId      : '411012792965165',
+				cookie     : true,
+				xfbml      : true,
+				version    : 'v3.3'
 			});
 			  
 			FB.AppEvents.logPageView();   
 			  
-		  };
+		};
 
-		  (function(d, s, id){
-			 var js, fjs = d.getElementsByTagName(s)[0];
-			 if (d.getElementById(id)) {return;}
-			 js = d.createElement(s); js.id = id;
-			 js.src = "https://connect.facebook.net/en_US/sdk.js";
-			 fjs.parentNode.insertBefore(js, fjs);
-		   }(document, 'script', 'facebook-jssdk'));
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 	   
 		function checkLoginState() {
             FB.getLoginStatus(function(response) {
@@ -31,20 +31,30 @@
         }
 				
 		function checkLoginState() {
-		  FB.getLoginStatus(function(response) {
-			statusChangeCallback(response);
-		  });
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+			});
+		}
+		
+		function statusChangeCallback(response) {
+			if (response.status === 'connected') {
+				FB.api('/me', function(response) {
+					document.getElementById('kontent').innerHTML = 'Imię i nazwisko: ' + response.name + '<br>' + 'Id użytkownika: ' + response.id + '<br>';
+				});
+			} 
+			else {
+				document.getElementById('kontent').innerHTML = 'Aby zobaczyć dane proszę zalogować sie do Facebook\'a korzystając z przycisku poniżej.<br><br>';
+			}
 		}
 	</script>
 </head>
-<body>
-	<div class = "kontent" style="text-align:center;">
-		Hello world!
-	
-		<fb:login-button 
-		  scope="public_profile,email"
-		  onlogin="checkLoginState();">
-		</fb:login-button>
+<body style="text-align:center;">
+	<div id = "kontent">
+		Aby zobaczyć dane proszę zalogować sie do Facebook'a korzystając z przycisku poniżej.<br><br>
 	</div>
+	<fb:login-button 
+		scope="public_profile,email"
+		onlogin="checkLoginState();">
+	</fb:login-button>
 </body>
 </html>
