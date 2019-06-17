@@ -1,0 +1,11 @@
+div#main_text{
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+img{
+    width: 25%;
+    height: auto;
+    float: right;
+    margin: 10px;
+}

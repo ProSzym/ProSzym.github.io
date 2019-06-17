@@ -2,59 +2,21 @@
 <html lang="pl-PL">
 <head>
 	<meta charset="UTF-8">
-	<title>Programowanie w internecie</title>
-	<script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '411012792965165',
-				cookie     : true,
-				xfbml      : true,
-				version    : 'v3.3'
-			});
-			  
-			FB.AppEvents.logPageView();   
-			  
-		};
-
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-			js = d.createElement(s); js.id = id;
-			js.src = "https://connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	   
-		function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
-            });
-        }
-				
-		function checkLoginState() {
-			FB.getLoginStatus(function(response) {
-				statusChangeCallback(response);
-			});
-		}
-		
-		function statusChangeCallback(response) {
-			if (response.status === 'connected') {
-				FB.api('/me', function(response) {
-					document.getElementById('kontent').innerHTML = 'Imię i nazwisko: ' + response.name + '<br>' + 'Id użytkownika: ' + response.id + '<br>';
-				});
-			} 
-			else {
-				document.getElementById('kontent').innerHTML = 'Aby zobaczyć dane proszę zalogować sie do Facebook\'a korzystając z przycisku poniżej.<br><br>';
-			}
-		}
-	</script>
+	<link rel="stylesheet" type="text/css" href="View/index.css">
+	<title>Projekt PWI</title>
 </head>
-<body style="text-align:center;">
-	<div id = "kontent">
-		Aby zobaczyć dane proszę zalogować sie do Facebook'a korzystając z przycisku poniżej.<br><br>
+<body>
+	<div class = "main">
+		<iframe class = "myFrame" id = "main" src = ""></iframe>
 	</div>
-	<fb:login-button 
-		scope="public_profile,email"
-		onlogin="checkLoginState();">
-	</fb:login-button>
+	<div class = "menu">
+		<table class = "menu">
+			<tr class = "menu"><td id = "lang">Język <button class = "lang" id = "pl" name = "pl">PL</button><button class = "lang" id = "en" name = "en">EN</button></td></tr>
+			<tr class = "menu"><td class = "menu_option" id = "home">Home</td></tr>
+			<tr class = "menu"><td class = "menu_option" id = "apollo">Apollo XI</td></tr>
+			<tr class = "menu"><td class = "menu_option" id = "saturn">Saturn V</td></tr>
+		</table>
+	</div>
+	<script src = "Controller/pageController.js"></script>
 </body>
 </html>
