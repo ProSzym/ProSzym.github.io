@@ -8,12 +8,12 @@ let saturn = document.getElementById("saturn");
 
 // Zmiana strony
 window.addEventListener("load", function(){
-    cookieBox();
     let lang = getCookie("lang") || "PL";
     document.getElementById("main").src = "View/"+lang+"_home.html";
     createListeners(lang);
 });
 
+// Zmiana strony w zależności od języka
 function createListeners(lang){
     if(lang == "PL"){
         home.addEventListener("click",changePageTemplate(myFrame, "View/PL_home.html"));
@@ -32,7 +32,7 @@ function changePageTemplate(myFrame, template){
         }
 }
 
-// Zmiana języka
+// Zmiana języka pod przyciskiem
 document.getElementById("pl").addEventListener("click", function(){
     document.cookie = "lang=PL";
     location.reload();
@@ -43,6 +43,7 @@ document.getElementById("en").addEventListener("click", function(){
     location.reload();
 });
 
+// Info o języku w ciasteczku
 function changePageLang(lang){
     if(lang == "PL"){
         document.cookie = "lang=PL";
@@ -67,24 +68,4 @@ function getCookie(cname) {
         }
     }
     return "";
-}
-
-function cookieBox(){
-    window.cookieconsent.initialise({
-        "palette": {
-            "popup": {
-                "background": "#fff"
-            },
-            "button": {
-                "background": "#4a79c4"
-            }
-        },
-        "theme": "edgeless",
-        "position": "top",
-        "content": {
-            "message": "Ta strona używa plików cookies. Kontynuując zgadasz się z polityką&nbsp;wykorzystywania plików cookies.",
-            "dismiss": "Rozumiem",
-            "link": "Dowiedz się więcej."
-        }
-    });
 }

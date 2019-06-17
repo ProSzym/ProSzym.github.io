@@ -3,6 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="View/index.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+	<script>
+		// ciasteczka
+		window.addEventListener("load", function(){
+			window.cookieconsent.initialise({
+			"palette": {
+				"popup": {
+				"background": "#4a79c4"
+				},
+				"button": {
+				"background": "#224f96"
+				}
+			}
+			})});
+	</script>
 	<title>Projekt PWI</title>
 </head>
 <body>
@@ -17,7 +33,6 @@
 			<tr class = "menu"><td class = "menu_option" id = "saturn">Saturn V</td></tr>
 		</table>
 	</div>
-	<script src = "Controller/cookieconsent.min.js"></script>
 	<script src = "Controller/pageController.js"></script>
 </body>
 </html>
