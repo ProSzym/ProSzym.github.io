@@ -8,6 +8,7 @@ let saturn = document.getElementById("saturn");
 
 // Zmiana strony
 window.addEventListener("load", function(){
+    cookieBox();
     let lang = getCookie("lang") || "PL";
     document.getElementById("main").src = "View/"+lang+"_home.html";
     createListeners(lang);
@@ -66,4 +67,24 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function cookieBox(){
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+                "background": "#fff"
+            },
+            "button": {
+                "background": "#4a79c4"
+            }
+        },
+        "theme": "edgeless",
+        "position": "top",
+        "content": {
+            "message": "Ta strona używa plików cookies. Kontynuując zgadasz się z polityką&nbsp;wykorzystywania plików cookies.",
+            "dismiss": "Rozumiem",
+            "link": "Dowiedz się więcej."
+        }
+    });
 }
